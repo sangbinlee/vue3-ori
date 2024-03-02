@@ -1,5 +1,23 @@
 <script setup>
   import { ref , onMounted } from 'vue'
+
+
+
+import Home from '@/views/HomeView.vue'
+import About from '@/views/AboutView.vue'
+
+const tabs = {
+  Home,
+  About,
+}
+
+const currentTab = ref('Home')
+  console.log('aa...........tabs', tabs)
+  console.log('aa...........tabs[currentTab]', tabs[currentTab])
+
+
+
+
   const checkedValues= ref([])
   const playList = [
     {videoId:'MFqLddbl9Y0', title: ''},
@@ -8,6 +26,8 @@
 
   const youtube = ref([])
   let target_copy = ref([])
+
+  const show = ref(true)
 
   console.log('aa...........youtube.value', youtube.value)
   onMounted(() => {
@@ -44,28 +64,34 @@
 </script>
 
 <template>
-  <div class="youtube">
-    <h1>This is an youtube page</h1>
-    <p>
-      {{ checkedValues }} <button>{{ checkedValues.length }} 선택</button>
-    </p>
+  <Transition name="slide-fade">
+    <div class="youtube" v-if="show">
+      
+	    <!-- <component :is="tabs[currentTab]" class="tab"></component> -->
 
-    <div v-for="(item, index) in playList" :key="index">
-      {{ item }}
+      <h1>This is an youtube page</h1>
+      <p>
+        {{ checkedValues }} <button>{{ checkedValues.length }} 선택</button>
+      </p>
 
-      <YouTube 
-        width="100%"
-          :src="`https://www.youtube.com/watch?v=${item.videoId}`" 
-          @ready="onReady"
-          ref="youtube"  />
- 
-      <button @click="playVideo(index)">play</button>
-      <button @click="pauseVideo(index)">pause</button>
-      <button @click="stopVideo(index)">stop</button>
-      <input type="checkbox" v-model="checkedValues" :value="item.videoId" @click.stop="" />
-    </div>
+      <div v-for="(item, index) in playList" :key="index">
+        {{ item }}
 
-  </div>
+        <YouTube 
+          width="100%"
+            :src="`https://www.youtube.com/watch?v=${item.videoId}`" 
+            @ready="onReady"
+            ref="youtube"  />
+  
+        <button @click="playVideo(index)">play</button>
+        <button @click="pauseVideo(index)">pause</button>
+        <button @click="stopVideo(index)">stop</button>
+        <input type="checkbox" v-model="checkedValues" :value="item.videoId" @click.stop="" />
+      </div>
+
+    </div>  
+  </Transition>
+
 </template>
 
 <style>
@@ -76,4 +102,7 @@
     align-items: center;
   }
 }
+ 
+
+
 </style>
