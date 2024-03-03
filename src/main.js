@@ -9,9 +9,10 @@ import YouTube from 'vue3-youtube'
 
 const app = createApp(App)
 
-app.component('YouTube', YouTube)
 
 app.use(createPinia())
 app.use(router)
 
 app.mount('#app')
+
+app.component('YouTube', YouTube)
