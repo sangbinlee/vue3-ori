@@ -63,6 +63,7 @@ Done. Now run:
 ```
 
 ### youtube
+https://www.npmjs.com/package/vue3-youtube
 
 ```sh
 npm install vue3-youtube 
@@ -71,9 +72,10 @@ npm install vue3-youtube
 
 
 ### 
+https://www.npmjs.com/package/vite-plugin-mkcert
 
 ```sh
-
+yarn add vite-plugin-mkcert -D
 ```
 
 

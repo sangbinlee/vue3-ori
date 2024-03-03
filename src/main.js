@@ -7,8 +7,6 @@ import App from './App.vue'
 import router from './router'
 import YouTube from 'vue3-youtube'
 
-
-
 const app = createApp(App)
 
 app.component('YouTube', YouTube)

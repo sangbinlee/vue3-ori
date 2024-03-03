@@ -1,21 +1,17 @@
 <script setup>
   import { ref , onMounted } from 'vue'
+  import YouTube from 'vue3-youtube'
+  import Home from '@/views/HomeView.vue'
+  import About from '@/views/AboutView.vue'
 
-
-
-import Home from '@/views/HomeView.vue'
-import About from '@/views/AboutView.vue'
-
-const tabs = {
-  Home,
-  About,
-}
-
-const currentTab = ref('Home')
+  const tabs = {
+    Home,
+    About,
+  }
+  const currentTab = ref('Home')
+  console.clear()
   console.log('aa...........tabs', tabs)
   console.log('aa...........tabs[currentTab]', tabs[currentTab])
-
-
 
 
   const checkedValues= ref([])
@@ -25,40 +21,33 @@ const currentTab = ref('Home')
   ]
 
   const youtube = ref([])
-  let target_copy = ref([])
+  let target_copy =  ref([])
 
   const show = ref(true)
 
-  console.log('aa...........youtube.value', youtube.value)
   onMounted(() => {
-    // await nextTick()
-    // youtube.playVideo()
-    // console.log('onMounted...........youtube', youtube)
-    // console.log('onMounted...........youtube.value', youtube.value)
+    console.log('onMounted...........youtube.value', youtube.value)
+    console.log('onMounted...........youtube.value[0]', youtube.value[0])
+    // console.log(JSON.stringify(youtube.value)); // { a: 0, b: { c: 0}}
     target_copy = Object.assign([], youtube.value)
     console.log('onMounted...........target_copy', target_copy)
+
+    // playVideo(0) 
   })
 
   function onReady() {
     // playVideo(0) 
-    playVideo(1) 
+    console.log('♥♥♥onReady...........onReady', 0)
   }
-
   function playVideo(index) {
-
-    console.log('playVideo...........index', index)
-    console.log('playVideo...........target_copy', target_copy[index])
-    // const target_copy = Object.assign({}, object[`youtube${index}`]._value)
+    console.log(`playVideo...........index`, index)
+    console.log(`playVideo...........target_copy[${index}]`, target_copy[index])
     target_copy[index].playVideo()
   }
   function pauseVideo(index) {
-    console.log('pauseVideo...........index', index)
-    console.log('pauseVideo...........target_copy', target_copy[index])
     target_copy[index].pauseVideo()
   }
   function stopVideo(index) {
-    console.log('stopVideo...........index', index)
-    console.log('stopVideo...........target_copy', target_copy[index])
     target_copy[index].stopVideo()
   }
 </script>
@@ -80,9 +69,10 @@ const currentTab = ref('Home')
         <YouTube 
           width="100%"
             :src="`https://www.youtube.com/watch?v=${item.videoId}`" 
-            @ready="onReady"
+            host="https://www.youtube.com"
             ref="youtube"  />
-  
+            <!-- @ready="onReady" -->
+            
         <button @click="playVideo(index)">play</button>
         <button @click="pauseVideo(index)">pause</button>
         <button @click="stopVideo(index)">stop</button>
