@@ -50,8 +50,8 @@
   ]
 
 
-  // const youtubes = ref([])
-  const youtubes = []
+  const youtubes = ref([])
+  // const youtubes = []
 
 
   onMounted(() => {
@@ -67,7 +67,7 @@
         console.log('♥onMounted...........youtubes[index]', youtubes[index])
         // console.log('♥onMounted...........youtubes.value[index].target', youtubes.value[index].target)
     });
-    youtubes.forEach((obj, index) => {
+    youtubes.value.forEach((obj, index) => {
       console.log('★Index: ' , index + ' obj: ' , obj);
       // console.log('★Index: ' , index + ' obj.data: ' , obj.data);
       // console.log('★Index: ' , index + ' obj.data[0]: ' , obj.data[0]);
@@ -83,23 +83,24 @@
 
       // console.log('♥onMounted...........target', target)
       // playList[index].title
-// const proxy1 = new Proxy(obj, {});
-// console.log(proxy1)
-// console.log({...proxy1})
-// console.log(JSON.parse(JSON.stringify(proxy1)))
+      // const proxy1 = new Proxy(obj, {});
+      // console.log(proxy1)
+      // console.log({...proxy1})
+      // console.log(JSON.parse(JSON.stringify(proxy1)))
 
-//       const obj2 = JSON.parse(JSON.stringify(proxy1))
+      //       const obj2 = JSON.parse(JSON.stringify(proxy1))
 
       // console.log('★Index: ' , index + ' obj.player: ' , obj.player);
       // obj.value.forEach((item, index) => {
-          // console.log('★★★Index: ' , index + ' obj: ' , item);
-          // youtubes.value[index].initPlayer()
-          // console.log('♥onMounted...........youtubes.value[index]', youtubes.value[index])
-          // console.log('♥onMounted...........youtubes.value[index].target', youtubes.value[index].target)
+        // console.log('★★★Index: ' , index + ' obj: ' , item);
+        // youtubes.value[index].initPlayer()
+        // console.log('♥onMounted...........youtubes.value[index]', youtubes.value[index])
+        // console.log('♥onMounted...........youtubes.value[index].target', youtubes.value[index].target)
       // });
         // youtubes.value[index].initPlayer()
         // console.log('♥onMounted...........youtubes.value[index]', youtubes.value[index])
         // console.log('♥onMounted...........youtubes.value[index].target', youtubes.value[index].target)
+        
     });
 
     // increment()
